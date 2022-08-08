@@ -73,7 +73,7 @@ jobs:
          image: sujaysuj/javaappaction
          tags: latest
          registry: docker.io
-         dockerfile: Dockerfile
+         dockerfile: docker/orders/Dockerfile.github
          username: ${{ secrets.DOCKER_USER }}
          password: ${{ secrets.DOCKER_PASS }}
 
