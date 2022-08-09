@@ -70,7 +70,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-         image: karuppaiah0327/demopull
+         image: karuppaiah0327/order1
          tags: latest
          registry: docker.io
          dockerfile: docker/orders/Dockerfile.github
