@@ -42,38 +42,13 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
-
-      # Build docker image for service
-      - name: Build docker image
-        uses: docker/build-push-action@v1
-        with:
-          push: false
-          dockerfile: docker/orders/Dockerfile.github
-          repository: ${{ env.GROUP }}/${{ env.REPO }}
-          tag_with_ref: true
-          tag_with_sha: true
-          tags: ${{ github.sha }}
-
-      # Build docker image for mock service
-      - name: Build mock docker image
-        uses: docker/build-push-action@v1
-        with:
-          push: false
-          path: test/json-server/
-          dockerfile: test/json-server/Dockerfile
-          repository: weaveworksdemos/json-server
-          tags: latest
-          
-      
-      # Push to dockerhub
   
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-         image: karuppaiah0327/order1
+         image: karuppaiah0327/shipping1
          tags: latest
          registry: docker.io
-         dockerfile: docker/orders/Dockerfile.github
+         dockerfile: docker/shipping1/Dockerfile
          username: ${{ secrets.DOCKER_USER }}
          password: ${{ secrets.DOCKER_PASS }}
-
