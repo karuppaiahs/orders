@@ -42,13 +42,19 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
-  
-      - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & push Docker image
+        
+      - name: Jfrog attemps Action
+         # You may pin to the exact commit or the version.
+         # uses: ruben-baez-mojix-com/jfrog-deployment@1d9b36340a1c49d08dfb1cc18556208153a23315
+        uses: ruben-baez-mojix-com/jfrog-deployment@v1.0.2
         with:
-         image: karuppaiah0327/shipping1
-         tags: latest
-         registry: docker.io
-         dockerfile: docker/shipping1/Dockerfile
-         username: ${{ secrets.DOCKER_USER }}
-         password: ${{ secrets.DOCKER_PASS }}
+        # Jfrog username
+         username: admin
+         # Jfrog password
+         password: password
+         # Artifact name
+         artifact: # optional
+         # URL where artifact will be deployed
+         url: http://172.16.238.30:8082/artifactory/orders-demo/
+         # expected time for artifact deployment
+        
